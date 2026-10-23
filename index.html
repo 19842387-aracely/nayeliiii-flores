@@ -668,47 +668,7 @@
       transform: translateY(-3px);
     }
 
-    /* ==========================================
-       TRADUCTOR GOOGLE WIDGET
-       ========================================== */
-    #traductor-sazon {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 1080;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      max-width: calc(100vw - 24px);
-      padding: 8px 12px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 50px;
-      box-shadow: var(--shadow-lg);
-      color: var(--text-dark);
-      font: 500 13px 'DM Sans', sans-serif;
-    }
-
-    #traductor-sazon .traductor-icono { font-size: 18px; }
-    #google_translate_element { max-width: 180px; overflow: hidden; }
-    #google_translate_element select {
-      max-width: 175px;
-      padding: 4px 8px;
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      background: var(--bg-body);
-      color: var(--text-dark);
-      font-size: 12px;
-      outline: none;
-    }
-    .goog-te-gadget { font-size: 0 !important; }
-    .goog-te-gadget .goog-te-combo { margin: 0 !important; }
-    .goog-logo-link, .goog-te-gadget span { display: none !important; }
-    body { top: 0 !important; }
-
     @media(max-width:480px) {
-      #traductor-sazon { right: 8px; bottom: 8px; padding: 6px 10px; }
-      #google_translate_element select { max-width: 140px; }
       .hero-content h1 { font-size: 2.5rem; }
     }
   </style>
@@ -743,6 +703,11 @@
         <li class="nav-item ms-lg-2">
           <button class="btn btn-theme" id="themeToggle" type="button" aria-label="Cambiar tema" title="Cambiar tema">
             <i class="bi bi-moon-stars-fill"></i>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-theme" id="languageToggle" type="button" aria-label="Cambiar a inglés" title="Cambiar a inglés">
+            <i class="bi bi-translate" aria-hidden="true"></i>
           </button>
         </li>
       </ul>
@@ -1170,12 +1135,6 @@
   <i class="bi bi-arrow-up"></i>
 </button>
 
-<!-- TRADUCTOR DE GOOGLE WIDGET -->
-<div aria-label="Traducir página" id="traductor-sazon">
-  <span aria-hidden="true" class="traductor-icono">🌐</span>
-  <div id="google_translate_element"></div>
-</div>
-
 <!-- SCRIPTS DE BOOTSTRAP Y LÓGICA DE LA PÁGINA -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -1234,6 +1193,114 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('bellaflor-theme', 'dark');
       themeIcon.className = 'bi bi-sun-fill';
     }
+  });
+
+  // Alternar idiomas con traducciones locales
+  const languageToggle = document.getElementById('languageToggle');
+  let currentLanguage = localStorage.getItem('bellaflor-language') === 'en' ? 'en' : 'es';
+  const translations = [
+    ['Flores y detalles con amor', 'Flowers and gifts made with love'],
+    ['Inicio', 'Home'], ['Nosotros', 'About'], ['Catálogo', 'Catalog'],
+    ['Ubicación', 'Location'], ['Hacer Pedido', 'Order'],
+    ['Detalles inolvidables', 'Unforgettable gifts'],
+    ['Expresa tus sentimientos con la ', 'Express your feelings with the '],
+    ['belleza de nuestras flores.', 'beauty of our flowers.'],
+    ['En BELLA FLOR creamos arreglos artesanales únicos, ramos de rosas frescas,', 'At BELLA FLOR, we create unique handmade arrangements and fresh rose bouquets,'],
+    ['cajas con peluches, globos y chocolates diseñados para hacer florecer sonrisas.', 'gift boxes with plush toys, balloons, and chocolates designed to bring smiles.'],
+    ['Ver catálogo', 'View catalog'], ['Personalizar pedido', 'Customize your order'],
+    ['Envíos a domicilio', 'Home delivery'], ['Flores 100% frescas', '100% fresh flowers'],
+    ['Empaque de lujo', 'Luxury packaging'], ['Arreglos Especiales', 'Special Arrangements'],
+    ['Diseños hechos a mano', 'Handmade designs'], ['Hecho con', 'Made with'],
+    ['Sobre nosotros', 'About us'], ['Magia, frescura y ', 'Magic, freshness, and '],
+    ['detalles únicos.', 'unique details.'], ['En ', 'At '],
+    [' nacemos con la pasión de transmitir emociones puras a través de las flores.', ' was born from a passion for sharing heartfelt emotions through flowers.'],
+    ['Cada ramo y detalle es preparado cuidadosamente por nuestros floristas apasionados, seleccionando las mejores rosas y acompañamientos en tonalidades suaves y románticas.', 'Each bouquet and gift is carefully prepared by our passionate florists, who select the finest roses and accents in soft, romantic colors.'],
+    ['Ya sea para un aniversario, cumpleaños, graduación o simplemente para decir "te quiero", disponemos de hermosas combinaciones con peluches afelpados, finos chocolates y globos personalizados.', 'Whether for an anniversary, birthday, graduation, or simply to say "I love you," we offer beautiful combinations with plush toys, fine chocolates, and personalized balloons.'],
+    ['¿Qué nos hace especiales?', 'What makes us special?'],
+    ['Diseño exclusivo en tonos rosados y neutros, atención personalizada y entregas puntuales con tarjeta de dedicatoria de regalo.', 'Exclusive designs in pink and neutral tones, personal service, and on-time delivery with a complimentary message card.'],
+    ['Explorar nuestra colección', 'Explore our collection'], ['Colección exclusiva', 'Exclusive collection'],
+    ['Nuestro Catálogo', 'Our Catalog'],
+    ['Explora nuestros ramos de flores, cajas sorpresas, peluches y combos románticos.', 'Explore our flower bouquets, surprise boxes, plush toys, and romantic gift sets.'],
+    ['Encuentra el detalle perfecto para esa persona especial.', 'Find the perfect gift for someone special.'],
+    ['Todo', 'All'], ['Ramos de Flores', 'Flower Bouquets'],
+    ['Peluches & Detalles', 'Plush Toys & Gifts'], ['Cajas de Rosas', 'Rose Boxes'],
+    ['Combos Especiales', 'Special Gift Sets'], ['Postres & Chocolates', 'Desserts & Chocolates'],
+    ['llaveros de hello kitty"', 'Hello Kitty keychains'], ['peluche kitty', 'Kitty plush toy'],
+    ['kitty rosa', 'Pink Kitty'], ['ramo de croche morado', 'Purple crochet bouquet'],
+    ['ramo de croche rosado', 'Pink crochet bouquet'], ['Super Combo Bella Flor', 'Bella Flor Super Gift Set'],
+    ['Chocolates Artesanales', 'Artisan Chocolates'], ['Macarons Franceses Soft', 'Soft French Macarons'],
+    ['Añadir a pedido', 'Add to order'], ['Realiza tu pedido', 'Place your order'],
+    ['¿Qué detalle deseas regalar?', 'What would you like to give?'],
+    ['Completa el formulario a continuación para consultar disponibilidad o coordinar el envío de tu pedido.', 'Complete the form below to check availability or arrange delivery for your order.'],
+    ['Detalles del Pedido', 'Order Details'], ['Nombre completo *', 'Full name *'],
+    ['Correo electrónico *', 'Email address *'], ['Teléfono / WhatsApp *', 'Phone / WhatsApp *'],
+    ['Fecha deseada de entrega *', 'Preferred delivery date *'],
+    ['Producto o detalles del pedido *', 'Product or order details *'],
+    ['Ej. Ana María Gómez', 'e.g. Ana Maria Gomez'],
+    ['Escribe aquí los productos de tu interés, dedicatoria o dirección de entrega...', 'Enter the products you are interested in, a message, or the delivery address...'],
+    ['Enviar Pedido por Correo', 'Send Order by Email'],
+    ['Por favor completa todos los campos requeridos.', 'Please complete all required fields.'],
+    ['Enviando tu solicitud de pedido...', 'Sending your order request...'],
+    ['¡Gracias por tu pedido! Nos pondremos en contacto contigo muy pronto.', 'Thank you for your order! We will be in touch soon.'],
+    ['¡Gracias! Tu solicitud de pedido ha sido registrada correctamente. Te contactaremos por WhatsApp o correo.', 'Thank you! Your order request has been received. We will contact you by WhatsApp or email.'],
+    ['Visítanos', 'Visit us'], ['Nuestra Tienda & Taller', 'Our Shop & Studio'],
+    ['Ven a conocer nuestras flores frescas y elegir tus detalles favoritos en persona.', 'Visit us to see our fresh flowers and choose your favorite gifts in person.'],
+    ['Lunes a Sábado: 8:00 AM - 6:30 PM | Domingos: 9:00 AM - 2:00 PM', 'Monday to Saturday: 8:00 AM - 6:30 PM | Sunday: 9:00 AM - 2:00 PM'],
+    ['Abrir en Google Maps', 'Open in Google Maps'],
+    ['Flores frescas, ramos artesanales y detalles especiales para acompañar tus mejores momentos.', 'Fresh flowers, handmade bouquets, and special gifts for life\'s best moments.'],
+    ['Explorar', 'Explore'], ['Sobre Nosotros', 'About Us'],
+    ['Catálogo de Productos', 'Product Catalog'], ['Pedidos Especiales', 'Custom Orders'],
+    ['Atención al Cliente', 'Customer Service'], ['Todos los derechos reservados.', 'All rights reserved.'],
+    ['Volver arriba', 'Back to top'], ['Cambiar tema', 'Change theme'],
+    ['Abrir navegación', 'Open navigation'], ['Volver al inicio', 'Back to top'],
+    ['Ramo Encanto Rosado', 'Pink Charm Bouquet'], ['Bouquet Primavera Soft', 'Soft Spring Bouquet'],
+    ['Ramo Amour Clásico', 'Classic Amour Bouquet'], ['Oso de Peluche Mimoso', 'Cuddly Teddy Bear'],
+    ['Set de Globos Metalizados', 'Metallic Balloon Set'], ['Caja Circular Rosas Premium', 'Premium Round Rose Box'],
+    ['Box Corazón de Amor', 'Heart of Love Box'],
+    ['Hola, estoy interesado/a en pedir el producto:', 'Hello, I am interested in ordering this product:']
+  ];
+  const spanishToEnglish = new Map(translations);
+  const englishToSpanish = new Map(translations.map(function (entry) {
+    return [entry[1], entry[0]];
+  }));
+
+  function updateLanguageButton() {
+    const label = currentLanguage === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish';
+    languageToggle.setAttribute('aria-label', label);
+    languageToggle.title = label;
+  }
+
+  function applyLanguage(language) {
+    const dictionary = language === 'en' ? spanishToEnglish : englishToSpanish;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let textNode;
+
+    while ((textNode = walker.nextNode())) {
+      if (textNode.parentElement.closest('script, style')) continue;
+      let text = textNode.nodeValue;
+      dictionary.forEach(function (translation, source) {
+        text = text.replaceAll(source, translation);
+      });
+      textNode.nodeValue = text;
+    }
+
+    document.querySelectorAll('[placeholder], [aria-label], [title], img[alt]').forEach(function (element) {
+      ['placeholder', 'aria-label', 'title', 'alt'].forEach(function (attribute) {
+        const value = element.getAttribute(attribute);
+        if (value && dictionary.has(value)) element.setAttribute(attribute, dictionary.get(value));
+      });
+    });
+
+    document.documentElement.lang = language;
+  }
+
+  updateLanguageButton();
+  applyLanguage(currentLanguage);
+  languageToggle.addEventListener('click', function () {
+    currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+    localStorage.setItem('bellaflor-language', currentLanguage);
+    applyLanguage(currentLanguage);
+    updateLanguageButton();
   });
 
   // 4. BOTÓN VOLVER ARRIBA VISIBILIDAD
@@ -1314,15 +1381,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 
-// 7. INICIALIZADOR DE GOOGLE TRANSLATE
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'es',
-    autoDisplay: false
-  }, 'google_translate_element');
-}
 </script>
-<script async defer src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
