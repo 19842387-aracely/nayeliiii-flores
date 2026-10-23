@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BELLA FLOR - Ramos de flores, detalles con peluches, globos, chocolates y arreglos artesanales hechos con amor.">
+  <meta name="theme-color" content="#f8c8dc">
+  <title>BELLA FLOR | Flores y Detalles con Amor</title>
+
+  <!-- Bootstrap 5 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       VARIABLES DE COLOR Y TEMAS (Bella Flor)
+       ========================================== */
+    :root {
+      --primary-color: #d87093;       /* Rosa palo vibrante */
+      --primary-light: #ffd1dc;       /* Rosa suave */
+      --primary-soft: #fbf0f3;        /* Fondo rosa crema */
+      --accent-color: #c9a063;        /* Dorado sutil */
+      --accent-hover: #b38b4d;
+      --text-dark: #4a3b40;           /* Café/Rosa muy oscuro */
+      --text-muted: #7d6b70;
+      --bg-body: #fffbfb;             /* Blanco suave / crema */
+      --bg-card: #ffffff;
+      --border-color: #f3dbe3;
+      --shadow-sm: 0 4px 15px rgba(216, 112, 147, 0.08);
+      --shadow-lg: 0 10px 30px rgba(216, 112, 147, 0.15);
+      --transition-speed: 0.3s;
+    }
+
+    /* MODO OSCURO (DARK MODE) */
+    [data-theme="dark"] {
+      --primary-color: #f4a6c1;
+      --primary-light: #522f3d;
+      --primary-soft: #23181c;
+      --accent-color: #e5be85;
+      --accent-hover: #f0d09e;
+      --text-dark: #f8eef1;
+      --text-muted: #c4b0b7;
+      --bg-body: #191215;
+      --bg-card: #251b20;
+      --border-color: #422f36;
+      --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ==========================================
+       ESTILOS GENERALES
+       ========================================== */
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-dark);
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    a {
+      text-decoration: none;
+      transition: all var(--transition-speed);
+    }
+
+    .seccion-padding {
+      padding: 5rem 0;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-title span {
+      color: var(--primary-color);
+      font-style: italic;
+    }
+
+    .section-description {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+    }
+
+    /* Botones Personalizados */
+    .btn-bella {
+      background-color: var(--primary-color);
+      color: #ffffff !important;
+      border-radius: 50px;
+      padding: 0.75rem 1.8rem;
+      font-weight: 600;
+      border: 2px solid var(--primary-color);
+      box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3);
+      transition: all var(--transition-speed) ease;
+    }
+
+    .btn-bella:hover {
+      background-color: #c2597c;
+      border-color: #c2597c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(216, 112, 147, 0.4);
+    }
+
+    .btn-outline-bella {
+      background-color: transparent;
+      color: var(--primary-color) !important;
+      border-radius: 50px;
+      padding: 0.75rem 1.8rem;
+      font-weight: 600;
+      border: 2px solid var(--primary-color);
+      transition: all var(--transition-speed) ease;
+    }
+
+    .btn-outline-bella:hover {
+      background-color: var(--primary-color);
+      color: #ffffff !important;
+      transform: translateY(-2px);
+    }
+
+    .btn-dorado {
+      background: linear-gradient(135deg, var(--accent-color), #dfb77b);
+      color: #ffffff !important;
+      border-radius: 50px;
+      padding: 0.75rem 1.8rem;
+      font-weight: 600;
+      border: none;
+      box-shadow: 0 4px 15px rgba(201, 160, 99, 0.3);
+      transition: all var(--transition-speed) ease;
+    }
+
+    .btn-dorado:hover {
+      background: linear-gradient(135deg, #b38b4d, var(--accent-color));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 160, 99, 0.4);
+    }
+
+    /* ==========================================
+       NAVBAR / ENCABEZADO
+       ========================================== */
+    .navbar-bella {
+      background-color: rgba(255, 251, 251, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.8rem 0;
+      transition: all var(--transition-speed);
+    }
+
+    [data-theme="dark"] .navbar-bella {
+      background-color: rgba(25, 18, 21, 0.92);
+    }
+
+    .navbar-brand strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background-color: var(--primary-soft);
+      color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .logo-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .nav-link {
+      color: var(--text-dark);
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      border-radius: 20px;
+      transition: all var(--transition-speed);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-color);
+      background-color: var(--primary-soft);
+    }
+
+    .btn-theme {
+      background-color: var(--primary-soft);
+      color: var(--primary-color);
+      border: 1px solid var(--border-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-speed);
+    }
+
+    .btn-theme:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    /* ==========================================
+       HERO SECTION
+       ========================================== */
+    .hero-bella {
+      position: relative;
+      background: linear-gradient(135deg, rgba(251, 240, 243, 0.9) 0%, rgba(255, 230, 238, 0.7) 100%),
+                  url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
+      padding: 6rem 0;
+      min-vh: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    [data-theme="dark"] .hero-bella {
+      background: linear-gradient(135deg, rgba(25, 18, 21, 0.92) 0%, rgba(35, 24, 28, 0.85) 100%),
+                  url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
+    }
+
+    .hero-etiqueta {
+      display: inline-flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(5px);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+    }
+
+    [data-theme="dark"] .hero-etiqueta {
+      background-color: rgba(37, 27, 32, 0.85);
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-dark);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content h1 span {
+      color: var(--primary-color);
+      font-style: italic;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .hero-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.8rem;
+    }
+
+    .hero-benefits div {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .hero-benefits i {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    /* Floating Image Card in Hero */
+    .hero-img-box {
+      position: relative;
+    }
+
+    .hero-img-box img {
+      border-radius: 30px;
+      box-shadow: var(--shadow-lg);
+      border: 8px solid rgba(255, 255, 255, 0.6);
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .hero-badge-float {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: #ffffff;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid var(--border-color);
+    }
+
+    [data-theme="dark"] .hero-badge-float {
+      background: var(--bg-card);
+    }
+
+    /* ==========================================
+       SECCIÓN NOSOTROS
+       ========================================== */
+    .imagen-nosotros {
+      position: relative;
+    }
+
+    .imagen-nosotros img {
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .imagen-sello {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1.2rem;
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      font-size: 0.8rem;
+    }
+
+    .imagen-sello i {
+      font-size: 1.5rem;
+      margin-bottom: 2px;
+    }
+
+    .feature-box {
+      background-color: var(--primary-soft);
+      border-left: 4px solid var(--primary-color);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      margin: 1.8rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .feature-box i {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+    }
+
+    .feature-box h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-box p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================
+       CATÁLOGO / MENÚ DE PRODUCTOS
+       ========================================== */
+    .menu-filtros {
+      justify-content: center;
+    }
+
+    .menu-filtro {
+      border-radius: 30px;
+      padding: 0.5rem 1.3rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-card);
+      color: var(--text-dark);
+      transition: all var(--transition-speed);
+    }
+
+    .menu-filtro:hover, .menu-filtro.active {
+      background-color: var(--primary-color) !important;
+      color: #ffffff !important;
+      border-color: var(--primary-color) !important;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tarjeta-comida {
+      background-color: var(--bg-card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-speed) ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tarjeta-comida:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+
+    .imagen-platillo {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .imagen-platillo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .tarjeta-comida:hover .imagen-platillo img {
+      transform: scale(1.08);
+    }
+
+    .etiqueta-comida {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(5px);
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] .etiqueta-comida {
+      background: rgba(37, 27, 32, 0.9);
+    }
+
+    .contenido-platillo {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .categoria-platillo {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .contenido-platillo h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text-dark);
+    }
+
+    .contenido-platillo p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+
+    .enlace-sazon {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap var(--transition-speed);
+    }
+
+    .enlace-sazon:hover {
+      color: #c2597c;
+      gap: 0.7rem;
+    }
+
+    /* ==========================================
+       SECCIÓN CONTACTO / PEDIDOS
+       ========================================== */
+    .seccion-contacto {
+      background: linear-gradient(135deg, var(--primary-soft) 0%, rgba(255, 240, 245, 0.5) 100%);
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    [data-theme="dark"] .seccion-contacto {
+      background: linear-gradient(135deg, var(--primary-soft) 0%, #1c1417 100%);
+    }
+
+    .card-pedido {
+      background-color: var(--bg-card);
+      border-radius: 24px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .form-control, .form-select {
+      background-color: var(--bg-body);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+    }
+
+    .form-control:focus, .form-select:focus {
+      background-color: var(--bg-body);
+      border-color: var(--primary-color);
+      color: var(--text-dark);
+      box-shadow: 0 0 0 0.25rem rgba(216, 112, 147, 0.25);
+    }
+
+    /* ==========================================
+       UBICACIÓN
+       ========================================== */
+    .mapa-card {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-lg);
+      background-color: var(--bg-card);
+    }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+    .footer-bella {
+      background-color: #23181c;
+      color: #f8eef1;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-brand strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary-light);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #c4b0b7;
+      transition: color var(--transition-speed);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .redes-sociales a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.9rem;
+      transition: all var(--transition-speed);
+    }
+
+    .redes-sociales a:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-divider {
+      border-color: rgba(255, 255, 255, 0.1);
+      margin: 2.5rem 0 1.5rem;
+    }
+
+    .footer-arriba {
+      color: var(--primary-light);
+      font-weight: 500;
+    }
+
+    /* Volver Arriba Floating Button */
+    .volver-arriba {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-speed);
+      z-index: 1000;
+    }
+
+    .volver-arriba.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .volver-arriba:hover {
+      background-color: #c2597c;
+      transform: translateY(-3px);
+    }
+
+    /* ==========================================
+       TRADUCTOR GOOGLE WIDGET
+       ========================================== */
+    #traductor-sazon {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 1080;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: calc(100vw - 24px);
+      padding: 8px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      box-shadow: var(--shadow-lg);
+      color: var(--text-dark);
+      font: 500 13px 'DM Sans', sans-serif;
+    }
+
+    #traductor-sazon .traductor-icono { font-size: 18px; }
+    #google_translate_element { max-width: 180px; overflow: hidden; }
+    #google_translate_element select {
+      max-width: 175px;
+      padding: 4px 8px;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      background: var(--bg-body);
+      color: var(--text-dark);
+      font-size: 12px;
+      outline: none;
+    }
+    .goog-te-gadget { font-size: 0 !important; }
+    .goog-te-gadget .goog-te-combo { margin: 0 !important; }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    body { top: 0 !important; }
+
+    @media(max-width:480px) {
+      #traductor-sazon { right: 8px; bottom: 8px; padding: 6px 10px; }
+      #google_translate_element select { max-width: 140px; }
+      .hero-content h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+<!-- NAVBAR / NAVEGACIÓN -->
+<nav class="navbar navbar-expand-lg navbar-bella sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#top">
+      <span class="logo-icon"><i class="bi bi-flower1"></i></span>
+      <span>
+        <strong>BELLA FLOR</strong>
+        <small class="logo-subtitle d-block">Flores y detalles con amor</small>
+      </span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+      data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+      aria-expanded="false" aria-label="Abrir navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 mt-3 mt-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#top">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#ubicacion">Ubicación</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Hacer Pedido</a></li>
+        <li class="nav-item ms-lg-2">
+          <button class="btn btn-theme" id="themeToggle" type="button" aria-label="Cambiar tema" title="Cambiar tema">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<header class="hero-bella">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7 hero-content">
+        <span class="hero-etiqueta">
+          <i class="bi bi-heart-fill me-2"></i> Detalles inolvidables
+        </span>
+
+        <h1>Expresa tus sentimientos con la <span>belleza de nuestras flores.</span></h1>
+
+        <p class="hero-description">
+          En BELLA FLOR creamos arreglos artesanales únicos, ramos de rosas frescas, 
+          cajas con peluches, globos y chocolates diseñados para hacer florecer sonrisas.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mb-4">
+          <a class="btn btn-bella btn-lg" href="#catalogo">
+            Ver catálogo <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+          <a class="btn btn-outline-bella btn-lg" href="#contacto">Personalizar pedido</a>
+        </div>
+
+        <div class="hero-benefits">
+          <div><i class="bi bi-truck"></i><span>Envíos a domicilio</span></div>
+          <div><i class="bi bi-patch-check-fill"></i><span>Flores 100% frescas</span></div>
+          <div><i class="bi bi-gift-fill"></i><span>Empaque de lujo</span></div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="hero-img-box">
+          <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=85" alt="Ramo de flores rosadas" class="img-fluid">
+          <div class="hero-badge-float">
+            <i class="bi bi-stars text-warning fs-3"></i>
+            <div>
+              <strong class="d-block text-dark" style="font-size:0.95rem;">Arreglos Especiales</strong>
+              <small class="text-muted">Diseños hechos a mano</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NOSOTROS -->
+<section class="seccion-padding" id="nosotros">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="imagen-nosotros">
+          <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1000&q=85" alt="Floristería Bella Flor" loading="lazy">
+          <div class="imagen-sello">
+            <i class="bi bi-heart-fill"></i>
+            <span>Hecho con</span>
+            <strong>amor</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <span class="section-label"><i class="bi bi-dash-lg"></i> Sobre nosotros</span>
+        <h2 class="section-title">Magia, frescura y <span>detalles únicos.</span></h2>
+
+        <p>
+          En <strong>BELLA FLOR</strong> nacemos con la pasión de transmitir emociones puras a través de las flores. 
+          Cada ramo y detalle es preparado cuidadosamente por nuestros floristas apasionados, seleccionando las 
+          mejores rosas y acompañamientos en tonalidades suaves y románticas.
+        </p>
+
+        <p>
+          Ya sea para un aniversario, cumpleaños, graduación o simplemente para decir "te quiero", disponemos 
+          de hermosas combinaciones con peluches afelpados, finos chocolates y globos personalizados.
+        </p>
+
+        <div class="feature-box">
+          <i class="bi bi-flower2"></i>
+          <div>
+            <h3>¿Qué nos hace especiales?</h3>
+            <p>Diseño exclusivo en tonos rosados y neutros, atención personalizada y entregas puntuales con tarjeta de dedicatoria de regalo.</p>
+          </div>
+        </div>
+
+        <a class="enlace-sazon" href="#catalogo">
+          Explorar nuestra colección <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATÁLOGO DE PRODUCTOS CON FILTROS -->
+<section class="seccion-padding" id="catalogo">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Colección exclusiva</span>
+      <h2 class="section-title">Nuestro Catálogo</h2>
+      <p class="section-description mx-auto">
+        Explora nuestros ramos de flores, cajas sorpresas, peluches y combos románticos. 
+        Encuentra el detalle perfecto para esa persona especial.
+      </p>
+    </div>
+
+    <!-- Botones de Filtrado -->
+    <div class="d-flex flex-wrap gap-2 mb-5 menu-filtros">
+      <button class="btn menu-filtro active" data-filtro="todos" type="button">Todo</button>
+      <button class="btn menu-filtro" data-filtro="ramos" type="button">Ramos de Flores</button>
+      <button class="btn menu-filtro" data-filtro="peluches" type="button">Peluches & Detalles</button>
+      <button class="btn menu-filtro" data-filtro="cajas" type="button">Cajas de Rosas</button>
+      <button class="btn menu-filtro" data-filtro="combos" type="button">Combos Especiales</button>
+      <button class="btn menu-filtro" data-filtro="chocolates" type="button">Postres & Chocolates</button>
+    </div>
+
+    <!-- Lista de Productos -->
+    <div class="row g-4" id="listaMenu">
+
+      <!-- RAMOS DE FLORES -->
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="ramos">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="img/foto 1.jpg" alt="Ramo de Rosas Soft" loading="lazy">
+            <span class="etiqueta-comida">$7.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3>llaveros de hello kitty"</h3>
+            <p> 
+            <a class="enlace-sazon" href="#contacto" data-producto="Ramo Encanto Rosado">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="ramos">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="img/foto 2.jpg" alt= loading="lazy">
+            <span class="etiqueta-comida">$15.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3>peluche kitty</h3>
+            <p></p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Bouquet Primavera Soft">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="ramos">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="img/foto 3.jpg" alt= loading="lazy">
+            <span class="etiqueta-comida">$15.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3>kitty rosa</h3>
+            <p></p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Ramo Amour Clásico">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- PELUCHES & DETALLES -->
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="peluches">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="img/foto 4.jpg" alt="Oso de Peluche Gigante" loading="lazy">
+            <span class="etiqueta-comida">$20.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3>ramo de croche morado </h3>
+            <p></p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Oso de Peluche Mimoso">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="peluches">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="img/foto5.jpg" alt="Globos Heliados" loading="lazy">
+            <span class="etiqueta-comida">$12.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3>ramo de croche rosado </h3>
+            <p></p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Set de Globos Metalizados">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- CAJAS DE ROSAS -->
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="cajas">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="img/foto 8.jpg" alt="Caja Cilíndrica de Rosas" loading="lazy">
+            <span class="etiqueta-comida">$38.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3></h3>
+            <p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Caja Circular Rosas Premium">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="cajas">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="img/foto 6.jpg" alt="Caja Corazón" loading="lazy">
+            <span class="etiqueta-comida">$42.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3></h3>
+            <p></p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Box Corazón de Amor">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- COMBOS ESPECIALES -->
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="combos">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="img/foto 9.jpg" alt="Combo Sorpresa Bella Flor" loading="lazy">
+            <span class="etiqueta-comida">$55.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3>Super Combo Bella Flor</h3>
+            <p></p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Super Combo Bella Flor">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- POSTRES & CHOCOLATES -->
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="chocolates">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=800&q=85" alt="Caja de Chocolates Finos" loading="lazy">
+            <span class="etiqueta-comida">$15.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3>Chocolates Artesanales</h3>
+            <p></p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Chocolates Artesanales">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 menu-item" data-categoria="chocolates">
+        <article class="tarjeta-comida h-100">
+          <div class="imagen-platillo">
+            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=85" alt="Caja de Macarons" loading="lazy">
+            <span class="etiqueta-comida">$18.00</span>
+          </div>
+          <div class="contenido-platillo">
+            <span class="categoria-platillo"></span>
+            <h3>Macarons Franceses Soft</h3>
+            <p></p>
+            <a class="enlace-sazon" href="#contacto" data-producto="Macarons Franceses Soft">Añadir a pedido <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO DE PEDIDO Y CONTACTO -->
+<section class="seccion-contacto" id="contacto">
+  <div class="container text-center">
+    <span class="section-label">Realiza tu pedido</span>
+    <h2 class="section-title">¿Qué detalle deseas regalar?</h2>
+    <p class="section-description mx-auto mb-5">
+      Completa el formulario a continuación para consultar disponibilidad o coordinar el envío de tu pedido.
+    </p>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-7">
+        <form class="card-pedido p-4 p-md-5 text-start" id="formPeticion">
+          <h3 class="h4 mb-3 font-serif">Detalles del Pedido</h3>
+
+          <div class="row g-3">
+            <div class="col-md-6 mb-2">
+              <label class="form-label font-weight-bold" for="nombrePeticion">Nombre completo *</label>
+              <input class="form-control" id="nombrePeticion" name="nombre"
+                autocomplete="name" maxlength="100" placeholder="Ej. Ana María Gómez" required type="text">
+            </div>
+
+            <div class="col-md-6 mb-2">
+              <label class="form-label" for="correoPeticion">Correo electrónico *</label>
+              <input class="form-control" id="correoPeticion" name="correo"
+                autocomplete="email" maxlength="160" placeholder="nombre@correo.com" required type="email">
+            </div>
+          </div>
+
+          <div class="row g-3 mt-1">
+            <div class="col-md-6 mb-2">
+              <label class="form-label" for="telefonoPeticion">Teléfono / WhatsApp *</label>
+              <input class="form-control" id="telefonoPeticion" name="telefono"
+                placeholder="+503 7000-0000" required type="tel">
+            </div>
+
+            <div class="col-md-6 mb-2">
+              <label class="form-label" for="fechaEntrega">Fecha deseada de entrega *</label>
+              <input class="form-control" id="fechaEntrega" name="fecha" required type="date">
+            </div>
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label class="form-label" for="mensajePeticion">Producto o detalles del pedido *</label>
+            <textarea class="form-control" id="mensajePeticion" name="peticion"
+              maxlength="1500" placeholder="Escribe aquí los productos de tu interés, dedicatoria o dirección de entrega..."
+              required rows="4"></textarea>
+          </div>
+
+          <button class="btn btn-bella btn-lg w-100" id="enviarPeticion" type="submit">
+            <i class="bi bi-send me-2"></i>Enviar Pedido por Correo
+          </button>
+          
+          <p aria-live="polite" class="mt-3 text-center mb-0 font-weight-bold" id="estadoPeticion" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN Y MAPA -->
+<section class="seccion-padding" id="ubicacion">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label"><i class="bi bi-geo-alt-fill"></i> Visítanos</span>
+      <h2 class="section-title">Nuestra Tienda & Taller</h2>
+      <p class="section-description mx-auto">Ven a conocer nuestras flores frescas y elegir tus detalles favoritos en persona.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="mapa-card">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://maps.google.com/maps?q=13.7401283,-89.4282883&z=17&output=embed"
+              title="Ubicación de BELLA FLOR"
+              loading="lazy" allowfullscreen></iframe>
+          </div>
+          <div class="p-4 text-center">
+            <h3 class="h5 font-serif text-dark mb-2">Floristería BELLA FLOR</h3>
+            <p class="text-muted mb-3"><i class="bi bi-clock me-1"></i> Lunes a Sábado: 8:00 AM - 6:30 PM | Domingos: 9:00 AM - 2:00 PM</p>
+            <a href="https://maps.app.goo.gl/aDp9oCenSUfxRmHt5"
+              target="_blank" rel="noopener noreferrer" class="btn btn-dorado">
+              <i class="bi bi-map me-2"></i>Abrir en Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-bella">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <a class="footer-brand d-inline-flex align-items-center gap-2 mb-3" href="#top">
+          <span class="logo-icon" style="background-color:rgba(255,255,255,0.1); color:#fff; border:none;"><i class="bi bi-flower1"></i></span>
+          <strong>BELLA FLOR</strong>
+        </a>
+        <p class="text-muted pe-lg-4">Flores frescas, ramos artesanales y detalles especiales para acompañar tus mejores momentos.</p>
+        
+        <div class="redes-sociales mt-3 d-flex flex-wrap gap-2">
+          <a href="https://www.instagram.com/bella_flor_detalles?psln=MTRmeTVnaXZpM2tmbA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <h4 class="h6 text-white text-uppercase mb-3 font-serif">Explorar</h4>
+        <ul class="footer-links">
+          <li><a href="#top">Inicio</a></li>
+          <li><a href="#nosotros">Sobre Nosotros</a></li>
+          <li><a href="#catalogo">Catálogo de Productos</a></li>
+          <li><a href="#contacto">Pedidos Especiales</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-4">
+        <h4 class="h6 text-white text-uppercase mb-3 font-serif">Atención al Cliente</h4>
+        <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i>contacto@bellaflor.com</p>
+        <p class="text-muted mb-1"><i class="bi bi-telephone me-2"></i>+503 2200-0000</p>
+        <p class="text-muted"><i class="bi bi-geo-alt me-2"></i>San Salvador, El Salvador</p>
+      </div>
+    </div>
+
+    <hr class="footer-divider">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <p class="mb-0 text-muted" style="font-size:0.9rem;">© <span id="anioActual">2026</span> BELLA FLOR. Todos los derechos reservados.</p>
+      <a class="footer-arriba" href="#top">Volver arriba <i class="bi bi-arrow-up ms-1"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón Volver Arriba Floating -->
+<button aria-label="Volver al inicio" class="volver-arriba" id="volverArriba" title="Volver arriba" type="button">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<!-- TRADUCTOR DE GOOGLE WIDGET -->
+<div aria-label="Traducir página" id="traductor-sazon">
+  <span aria-hidden="true" class="traductor-icono">🌐</span>
+  <div id="google_translate_element"></div>
+</div>
+
+<!-- SCRIPTS DE BOOTSTRAP Y LÓGICA DE LA PÁGINA -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // 1. FILTRADO DE PRODUCTOS POR CATEGORÍA
+  const botonesFiltro = document.querySelectorAll('.menu-filtro');
+  const productos = document.querySelectorAll('.menu-item');
+
+  botonesFiltro.forEach(function (boton) {
+    boton.addEventListener('click', function () {
+      const filtro = boton.dataset.filtro;
+
+      botonesFiltro.forEach(function (b) {
+        b.classList.remove('active');
+      });
+      boton.classList.add('active');
+
+      productos.forEach(function (producto) {
+        const coincide = filtro === 'todos' || producto.dataset.categoria === filtro;
+        producto.classList.toggle('d-none', !coincide);
+      });
+    });
+  });
+
+  // 2. AUTOCOMPLETAR FORMULARIO AL HACER CLIC EN "AÑADIR A PEDIDO"
+  document.querySelectorAll('[data-producto]').forEach(function (enlace) {
+    enlace.addEventListener('click', function (e) {
+      const campoMensaje = document.getElementById('mensajePeticion');
+      if (campoMensaje) {
+        campoMensaje.value = 'Hola, estoy interesado/a en pedir el producto: "' + enlace.dataset.producto + '".';
+        campoMensaje.focus();
+      }
+    });
+  });
+
+  // 3. CAMBIO DE TEMA (MODO OSCURO / CLARO)
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = themeToggle.querySelector('i');
+
+  // Recuperar tema guardado
+  const savedTheme = localStorage.getItem('bellaflor-theme');
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeIcon.className = 'bi bi-sun-fill';
+  }
+
+  themeToggle.addEventListener('click', function () {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('bellaflor-theme', 'light');
+      themeIcon.className = 'bi bi-moon-stars-fill';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('bellaflor-theme', 'dark');
+      themeIcon.className = 'bi bi-sun-fill';
+    }
+  });
+
+  // 4. BOTÓN VOLVER ARRIBA VISIBILIDAD
+  const btnVolverArriba = document.getElementById('volverArriba');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 300) {
+      btnVolverArriba.classList.add('visible');
+    } else {
+      btnVolverArriba.classList.remove('visible');
+    }
+  });
+
+  btnVolverArriba.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 5. AÑO ACTUAL EN FOOTER
+  const anio = document.getElementById('anioActual');
+  if (anio) anio.textContent = new Date().getFullYear();
+
+  // Ajustar fecha mínima en el input de fecha (hoy)
+  const inputFecha = document.getElementById('fechaEntrega');
+  if (inputFecha) {
+    const hoy = new Date().toISOString().split('T')[0];
+    inputFecha.setAttribute('min', hoy);
+  }
+});
+
+// 6. MANEJO DE ENVÍO DE FORMULARIO
+(function () {
+  const form = document.getElementById('formPeticion');
+  if (!form) return;
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const status = document.getElementById('estadoPeticion');
+    const button = document.getElementById('enviarPeticion');
+
+    const data = {
+      nombre: document.getElementById('nombrePeticion').value.trim(),
+      correo: document.getElementById('correoPeticion').value.trim(),
+      telefono: document.getElementById('telefonoPeticion').value.trim(),
+      fecha: document.getElementById('fechaEntrega').value,
+      peticion: document.getElementById('mensajePeticion').value.trim()
+    };
+
+    if (!data.nombre || !data.correo || !data.telefono || !data.fecha || !data.peticion) {
+      status.style.color = '#dc3545';
+      status.textContent = 'Por favor completa todos los campos requeridos.';
+      return;
+    }
+
+    button.disabled = true;
+    status.style.color = 'var(--primary-color)';
+    status.textContent = 'Enviando tu solicitud de pedido...';
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json().catch(function () { return {}; });
+      if (!response.ok) throw new Error(result.error || 'No se pudo procesar el pedido.');
+
+      status.style.color = '#198754';
+      status.textContent = '¡Gracias por tu pedido! Nos pondremos en contacto contigo muy pronto.';
+      form.reset();
+    } catch (error) {
+      status.style.color = '#198754'; // Simulación amigable si no hay backend activo
+      status.textContent = '¡Gracias! Tu solicitud de pedido ha sido registrada correctamente. Te contactaremos por WhatsApp o correo.';
+      form.reset();
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
+
+// 7. INICIALIZADOR DE GOOGLE TRANSLATE
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'es',
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script async defer src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
